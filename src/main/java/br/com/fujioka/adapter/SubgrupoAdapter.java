@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.com.fujioka.builder.SubgrupoDTOBuilder;
 import br.com.fujioka.dto.SubgrupoDTO;
+import br.com.fujioka.dto.SubgrupoSimplesDTO;
 import br.com.fujioka.entity.SubGrupo;
 
 public class SubgrupoAdapter extends SubgrupoDTO{
@@ -67,6 +68,30 @@ public class SubgrupoAdapter extends SubgrupoDTO{
 		this.subgrupo.setFuncionario(new FuncionarioAdapter().convertFuncionario(dto.getFuncionario()));
 		
 		return this.subgrupo;
+	}
+
+	public SubGrupo converterSubggrupo(SubgrupoSimplesDTO dto) {
+		if(this.subgrupo == null)
+			this.subgrupo = new SubGrupo();
+		this.subgrupo.setCodigoSubgrupo(dto.getCodigo());
+		this.subgrupo.setNomeSubgrupo(dto.getNomeSubgrupo());
+		this.subgrupo.setDataAlteracao(dto.getDataCriacao());
+
+		
+		return this.subgrupo;
+	}
+
+
+	public SubgrupoSimplesDTO converterSimplesDTO(){
+		SubgrupoSimplesDTO dto = new SubgrupoSimplesDTO();
+		if(this.subgrupo != null){
+			dto.setCodigo(this.subgrupo.getCodigoSubgrupo());
+			dto.setDataCriacao(this.subgrupo.getDataAlteracao());
+			dto.setNomeSubgrupo(this.subgrupo.getNomeSubgrupo());
+
+			return dto;
+		}
+		return null;
 	}
 	
 	

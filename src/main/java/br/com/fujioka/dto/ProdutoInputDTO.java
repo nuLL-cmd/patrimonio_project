@@ -9,7 +9,6 @@ public class ProdutoInputDTO {
 	private Integer codigoProduto;
 	private String nomeProduto;
 	private Date dataRegistro;
-
 	private SituacaoEnum situacao;
 
 	private FuncionarioSimplesDTO funcionario;

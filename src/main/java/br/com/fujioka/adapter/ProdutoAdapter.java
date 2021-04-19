@@ -21,6 +21,10 @@ public class ProdutoAdapter extends ProdutoDTO {
 		this.produtos = produtos;
 	}
 
+	public ProdutoAdapter(){
+
+	}
+
 	public ProdutoDTO converterDTO() {
 		if (this.produto != null) {
 			setCodigoProduto(this.produto.getCodigoProduto());
@@ -58,11 +62,16 @@ public class ProdutoAdapter extends ProdutoDTO {
 		
 		this.produto.setCodigoProduto(dto.getCodigoProduto());
 		this.produto.setDataRegistro(dto.getDataRegistro());
+		this.produto.setSituacao(dto.getSituacao());
 		this.produto.setNomeProduto(dto.getNomeProduto());
 		this.produto.setGrupo(new GrupoAdapter().converterGrupo(dto.getGrupo()));
 		this.produto.setFuncionario(new FuncionarioAdapter().convertFuncionario(dto.getFuncionario()));
+		this.produto.setSubgrupo(new SubgrupoAdapter().converterSubggrupo(dto.getSubgrupo()));
 		
-		return null;
+		return this.produto;
 	}
+
+		
+
 
 }

@@ -7,16 +7,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import br.com.fujioka.adapter.FuncionarioAdapter;
+import br.com.fujioka.adapter.GrupoAdapter;
 import br.com.fujioka.adapter.ProdutoAdapter;
+import br.com.fujioka.adapter.SubgrupoAdapter;
 import br.com.fujioka.dto.ProdutoDTO;
 import br.com.fujioka.dto.ProdutoInputDTO;
 import br.com.fujioka.entity.Funcionario;
 import br.com.fujioka.entity.Grupo;
 import br.com.fujioka.entity.Produto;
+import br.com.fujioka.entity.SubGrupo;
 import br.com.fujioka.exception.NegocioException;
 import br.com.fujioka.repository.FuncionarioRepo;
 import br.com.fujioka.repository.GrupoRepo;
 import br.com.fujioka.repository.ProdutoRepo;
+import br.com.fujioka.repository.SubGrupoRepo;
 
 @Service
 public class ProdutoService {
@@ -29,6 +34,8 @@ public class ProdutoService {
 	
 	@Autowired 
 	private GrupoRepo grupoRepo;
+
+	@Autowired SubGrupoRepo subgrupoRepo;
 	
 
 	public ResponseEntity<?> buscaTodos() {
@@ -55,7 +62,17 @@ public class ProdutoService {
 		
 		Grupo grupo = grupoRepo.findById(dto.getGrupo().getCodigoGrupo()).orElseThrow(()->
 			new NegocioException("Grupo não encontrado na base de addos", HttpStatus.BAD_REQUEST));
-		return null;
+
+		SubGrupo subgrupo = subgrupoRepo.findById(dto.getSubgrupo().getCodigo()).orElseThrow(()-> new NegocioException("Subgrupo não encontrado na base de dados", HttpStatus.BAD_REQUEST));
+
+		dto.setFuncionario(new FuncionarioAdapter(funcionario).converterSimplesDTO());
+		dto.setGrupo(new GrupoAdapter(grupo).converterSimplesDTO());
+		dto.setSubgrupo(new SubgrupoAdapter(subgrupo).converterSimplesDTO());
+
+		Produto produto =  new ProdutoAdapter().converterProduto(dto);
+		produto = repository.save(produto);
+
+		return ResponseEntity.ok(new ProdutoAdapter(produto).converterDTO());
 		
 	}
 
