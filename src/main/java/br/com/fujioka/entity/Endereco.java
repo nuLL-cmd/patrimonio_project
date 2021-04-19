@@ -8,15 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import javax.validation.groups.ConvertGroup;
-import javax.validation.groups.Default;
-
-import org.hibernate.annotations.GeneratorType;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-import br.com.fujioka.entity.groups.ConverterGroupItem;
 import br.com.fujioka.enumerator.EstadoEnum;
 
 @Entity(name = "tb_endereco")

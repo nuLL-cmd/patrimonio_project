@@ -1,6 +1,5 @@
 package br.com.fujioka.exception.entity;
 
-import java.time.OffsetDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;

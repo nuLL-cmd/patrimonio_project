@@ -1,28 +1,18 @@
 package br.com.fujioka.service;
 
-import java.text.DateFormat;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.hibernate.HibernateException;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import br.com.fujioka.adapter.FuncionarioAdapter;
 import br.com.fujioka.dto.FuncionarioDTO;
 import br.com.fujioka.dto.FuncionarioSimplesDTO;
-import br.com.fujioka.entity.Endereco;
 import br.com.fujioka.entity.Funcionario;
-import br.com.fujioka.exception.ErroExceptionHandler;
 import br.com.fujioka.exception.NegocioException;
 import br.com.fujioka.exception.entity.CamposErroHandler;
 import br.com.fujioka.exception.entity.ErroHandler;

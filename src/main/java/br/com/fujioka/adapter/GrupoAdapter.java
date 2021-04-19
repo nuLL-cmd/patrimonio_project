@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fujioka.builder.GrupoDTOBuilder;
-import br.com.fujioka.dto.FuncionarioSimplesDTO;
 import br.com.fujioka.dto.GrupoDTO;
 import br.com.fujioka.dto.GrupoSimplesDTO;
 import br.com.fujioka.entity.Grupo;

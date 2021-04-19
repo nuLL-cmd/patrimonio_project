@@ -2,13 +2,8 @@ package br.com.fujioka.builder;
 
 import java.sql.Date;
 
-import br.com.fujioka.dto.FuncionarioDTO;
 import br.com.fujioka.dto.FuncionarioSimplesDTO;
 import br.com.fujioka.dto.GrupoDTO;
-import br.com.fujioka.entity.Endereco;
-import br.com.fujioka.entity.Grupo;
-import br.com.fujioka.enumerator.SituacaoEnum;
-import javassist.compiler.ast.NewExpr;
 
 public class GrupoDTOBuilder {
 

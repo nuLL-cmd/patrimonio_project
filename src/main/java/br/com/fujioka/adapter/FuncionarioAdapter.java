@@ -3,14 +3,10 @@ package br.com.fujioka.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.engine.query.spi.ReturnMetadata;
-
 import br.com.fujioka.builder.FuncionarioDTOBuilder;
 import br.com.fujioka.dto.FuncionarioDTO;
 import br.com.fujioka.dto.FuncionarioSimplesDTO;
-import br.com.fujioka.entity.Endereco;
 import br.com.fujioka.entity.Funcionario;
-import br.com.fujioka.enumerator.SituacaoEnum;
 
 public class FuncionarioAdapter extends FuncionarioDTO {
 

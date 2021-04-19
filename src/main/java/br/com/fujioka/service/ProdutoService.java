@@ -1,10 +1,6 @@
 package br.com.fujioka.service;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,12 +12,10 @@ import br.com.fujioka.dto.ProdutoDTO;
 import br.com.fujioka.dto.ProdutoInputDTO;
 import br.com.fujioka.entity.Funcionario;
 import br.com.fujioka.entity.Grupo;
-import br.com.fujioka.entity.Patrimonio;
 import br.com.fujioka.entity.Produto;
 import br.com.fujioka.exception.NegocioException;
 import br.com.fujioka.repository.FuncionarioRepo;
 import br.com.fujioka.repository.GrupoRepo;
-import br.com.fujioka.repository.PatrimonioRepo;
 import br.com.fujioka.repository.ProdutoRepo;
 
 @Service

@@ -2,9 +2,6 @@ package br.com.fujioka.dto;
 
 import java.sql.Date;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
 import br.com.fujioka.enumerator.SituacaoEnum;
 
 public class ProdutoDTO {

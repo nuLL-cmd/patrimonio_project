@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.fujioka.dto.ProdutoDTO;
 import br.com.fujioka.dto.ProdutoInputDTO;
 import br.com.fujioka.entity.Produto;
 import br.com.fujioka.service.ProdutoService;

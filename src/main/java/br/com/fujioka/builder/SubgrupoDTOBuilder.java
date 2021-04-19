@@ -2,12 +2,9 @@ package br.com.fujioka.builder;
 
 import java.sql.Date;
 
-import br.com.fujioka.dto.FuncionarioDTO;
 import br.com.fujioka.dto.FuncionarioSimplesDTO;
-import br.com.fujioka.dto.GrupoDTO;
 import br.com.fujioka.dto.GrupoSimplesDTO;
 import br.com.fujioka.dto.SubgrupoDTO;
-import br.com.fujioka.entity.SubGrupo;
 
 public class SubgrupoDTOBuilder {
 	

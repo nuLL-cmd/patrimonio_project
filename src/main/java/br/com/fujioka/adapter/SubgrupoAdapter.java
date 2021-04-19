@@ -1,14 +1,10 @@
 package br.com.fujioka.adapter;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fujioka.builder.SubgrupoDTOBuilder;
-import br.com.fujioka.dto.FuncionarioDTO;
-import br.com.fujioka.dto.GrupoDTO;
 import br.com.fujioka.dto.SubgrupoDTO;
-import br.com.fujioka.entity.Grupo;
 import br.com.fujioka.entity.SubGrupo;
 
 public class SubgrupoAdapter extends SubgrupoDTO{

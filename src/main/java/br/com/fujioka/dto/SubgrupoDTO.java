@@ -2,8 +2,6 @@ package br.com.fujioka.dto;
 
 import java.sql.Date;
 
-import br.com.fujioka.entity.Grupo;
-
 public class SubgrupoDTO {
 
 	private Integer codigo;

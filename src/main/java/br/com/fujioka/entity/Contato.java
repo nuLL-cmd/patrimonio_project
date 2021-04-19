@@ -1,18 +1,14 @@
 package br.com.fujioka.entity;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import javax.validation.groups.ConvertGroup;
-import javax.validation.groups.Default;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-import br.com.fujioka.entity.groups.ConverterGroupItem;
 import br.com.fujioka.entity.pk.ContatoId;
 
 @Entity(name = "tb_contato")
