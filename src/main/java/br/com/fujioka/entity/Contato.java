@@ -3,6 +3,7 @@ package br.com.fujioka.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -12,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import br.com.fujioka.entity.pk.ContatoId;
 
 @Entity(name = "tb_contato")
+@Table(schema = "dbo")
 @JsonInclude(value = Include.NON_NULL)
 @IdClass(ContatoId.class)
 public class Contato {

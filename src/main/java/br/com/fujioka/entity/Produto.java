@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -18,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import br.com.fujioka.enumerator.SituacaoEnum;
 
 @Entity(name = "tb_produto")
+@Table(schema = "dbo")
 @JsonInclude(value = Include.NON_NULL)
 public class Produto {
 

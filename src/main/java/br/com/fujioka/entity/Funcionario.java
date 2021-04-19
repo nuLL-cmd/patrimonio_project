@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -28,6 +29,7 @@ import br.com.fujioka.enumerator.SituacaoEnum;
 @JsonInclude(value = Include.NON_NULL)
 @NotNull(message = "Objeto pessoa não pode ser nulo")
 @Entity(name = "tb_funcionario")
+@Table(schema = "dbo")
 public class Funcionario {
 
 	@Id
