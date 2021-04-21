@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -71,6 +72,15 @@ public class SecuritySpring extends WebSecurityConfigurerAdapter {
 
     }
 
+    /**
+     * Bean de cofniguração de Cors, verificar a documentação 
+     * 
+     * https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/cors/CorsConfiguration.html
+     * 
+     * https://docs.spring.io/springsecurity/site/docs/current/apidocs/org/springframework/security/config/annotation/web/builders/HttpSecurity.html
+
+     * @return
+     */
     @Bean
     CorsConfigurationSource conrsConfigurationSource(){
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -79,5 +89,13 @@ public class SecuritySpring extends WebSecurityConfigurerAdapter {
         return source;
     }
 
+    /**
+     * Bean referente a configuração da encriptação de senha, sera codificada ao gravar no banco, e decodificada cas seja utilizada.
+     * @return
+     */
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
 
 }
