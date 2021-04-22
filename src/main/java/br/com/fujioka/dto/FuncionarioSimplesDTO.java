@@ -9,6 +9,8 @@ public class FuncionarioSimplesDTO {
 	private String nome;
 	
 	private SituacaoEnum situacao;
+
+
 	
 	
 	public Integer getMatricula() {

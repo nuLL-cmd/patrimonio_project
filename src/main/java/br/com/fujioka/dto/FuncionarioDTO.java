@@ -1,10 +1,13 @@
 package br.com.fujioka.dto;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import br.com.fujioka.entity.Contato;
 import br.com.fujioka.entity.Endereco;
+import br.com.fujioka.entity.Perfil;
 import br.com.fujioka.enumerator.SituacaoEnum;
 
 @JsonInclude(value = Include.NON_NULL)
@@ -19,17 +22,20 @@ public class FuncionarioDTO {
 	
 	private Contato contato;
 
+	private List<Perfil> perfis;
+	
 	public FuncionarioDTO() {
 	}
 
 	public FuncionarioDTO(Integer matricula, String usuario, String nome
-			, SituacaoEnum situacao, Endereco endereco, Contato contato) {
+			, SituacaoEnum situacao, Endereco endereco, Contato contato, List<Perfil> perfis) {
 		this.matricula = matricula;
 		this.usuario = usuario;
 		this.nome = nome;
 		this.situacao = situacao;
 		this.endereco = endereco;
 		this.contato = contato;
+		this.perfis = perfis;
 	}
 
 	public Integer getMatricula() {
@@ -78,6 +84,15 @@ public class FuncionarioDTO {
 
 	public void setContato(Contato contato) {
 		this.contato = contato;
+	}
+
+
+	public void setPerfis(List<Perfil> perfis){
+		this.perfis = perfis;
+	}
+
+	public List<Perfil> getPerfis(){
+		return this.perfis;
 	}
 	
 	

@@ -39,7 +39,8 @@ public class SecuritySpring extends WebSecurityConfigurerAdapter {
         Sera reconsiderada apenas para a autenticação e e fuguramente para ambiente de teste, pois um novo array de rotas publicas apenas para metodo GET sera criado.
     */ 
     private static final String[] ROTAS_PUBLICAS ={
-        "/auth/**"
+        "/auth/**",
+        "/funcionarios/**"
     };
 
      /*
@@ -48,7 +49,8 @@ public class SecuritySpring extends WebSecurityConfigurerAdapter {
     */ 
     private static final String[] ROTAS_PUBLICAS_GET ={
         "/produtos/**",
-        "/patrimonios/**"
+        "/patrimonios/**",
+        
     };
 
 

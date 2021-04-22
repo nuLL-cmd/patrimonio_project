@@ -1,8 +1,11 @@
 package br.com.fujioka.builder;
 
+import java.util.List;
+
 import br.com.fujioka.dto.FuncionarioDTO;
 import br.com.fujioka.entity.Contato;
 import br.com.fujioka.entity.Endereco;
+import br.com.fujioka.entity.Perfil;
 import br.com.fujioka.enumerator.SituacaoEnum;
 
 public class FuncionarioDTOBuilder {
@@ -15,10 +18,12 @@ public class FuncionarioDTOBuilder {
 	private Endereco endereco;
 	
 	private Contato contato;
+
+	private List<Perfil> perfis;
 	
 	public FuncionarioDTO build() {
 		return new FuncionarioDTO(this.matricula,this.usuario,
-				this.nome, this.situacao, this.endereco, this.contato);
+				this.nome, this.situacao, this.endereco, this.contato, this.perfis);
 	}
 	
 	
@@ -50,5 +55,10 @@ public class FuncionarioDTOBuilder {
 	public FuncionarioDTOBuilder usuario(String usuario) {
 		this.usuario = usuario;
 		return this;
+	}
+
+	public FuncionarioDTOBuilder perfis(List<Perfil> perfis){
+	this.perfis = perfis;
+	return this;
 	}
 }
