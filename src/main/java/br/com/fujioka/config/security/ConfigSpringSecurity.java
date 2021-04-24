@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
@@ -39,7 +40,7 @@ public class ConfigSpringSecurity extends WebSecurityConfigurerAdapter {
 
 
     @Autowired
-    private UserAuthService userDetailsService;
+    private UserDetailsService userDetailsService;
 
     @Autowired
     private ConfigJWT security;
@@ -71,6 +72,7 @@ public class ConfigSpringSecurity extends WebSecurityConfigurerAdapter {
         .anyRequest()
         .authenticated();
         http.addFilter(new JWTAuthenticatorFilter(authenticationManager(), security));
+        http.addFilter(new JWTAuthorizationFilter((authenticationManager()), security, userDetailsService));
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
     }
