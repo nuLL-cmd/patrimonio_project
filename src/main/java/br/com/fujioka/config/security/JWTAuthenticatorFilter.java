@@ -19,14 +19,26 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import br.com.fujioka.dto.CredenciaisDTO;
-import br.com.fujioka.entity.UserAuthentication;
+import br.com.fujioka.entity.UserAuth;
 
+/**
+ * @author Marco Aurelio
+ * Classe que representara um filtro para a autenticação jwt, essa classe extende de UsernamePasswordAuthenticationFilter (por exigencia da documentação)
+ * De modo geral, a classe possui dois metodos:
+ * 
+ * O metodo attemptAuthentication tenta autenticar com as credenciais passadas atravez da requisição post dentro do objeto request, 
+ * tenta gerar um token com os dados obtidos atraves do objeto authToken da classe UsernamePsswordAuthenticationToken,
+ *  por fim tenta autenticar atraves do metodo authenticate do objeto authenticationManager da classe AuthenticationManager, retornando essa autenticação.
+ * 
+ * O meteodo successfulAuthentication gera o token com base na matricula, e grava no cabeçalho da autenticação do tipo "Authorization"  e um value "Bearer + token"
+ * 
+ */
 public class JWTAuthenticatorFilter extends UsernamePasswordAuthenticationFilter {
     
     private AuthenticationManager authenticationManager;
-    private SecurityJWT security;
+    private ConfigJWT security;
 
-    public JWTAuthenticatorFilter(AuthenticationManager authenticationManager, SecurityJWT security){
+    public JWTAuthenticatorFilter(AuthenticationManager authenticationManager, ConfigJWT security){
         this.authenticationManager = authenticationManager;
         this.security = security;
     }
@@ -52,7 +64,7 @@ public class JWTAuthenticatorFilter extends UsernamePasswordAuthenticationFilter
 
     @Override
     protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse response, FilterChain chain, Authentication auth) throws IOException, ServletException{
-        String matricula = ((UserAuthentication) auth.getPrincipal()).getUsername();
+        String matricula = ((UserAuth) auth.getPrincipal()).getUsername();
         String token = security.generateToken(matricula);
         response.addHeader("Authorization", "Bearer "+ token);
         

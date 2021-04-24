@@ -8,8 +8,16 @@ import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+/**
+ * @author Marco Aurelio
+ * Classe de configuração para o JWT, onde é recuperado a palavra secreta e o tempo de expiração,
+ * colocados no application.properties da aplicação
+ * O metodo generateToken() que recebe uma string contendo a matricula retorna
+ * um JTWT configuravel com o subject(matricula), um setExpiration(passando a data atual mais o tempo de expiração)
+ * uma assinatura passando o tipo de algoritimo usado e a palavra secreta, compactando assim tudo para a geração do token.
+ */
 @Component
-public class SecurityJWT {
+public class ConfigJWT {
     
     @Value("${jwt.secret}")
     private String secret;
