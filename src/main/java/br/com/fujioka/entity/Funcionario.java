@@ -80,7 +80,7 @@ public class Funcionario {
 	 * Relacionamentos ManyToMany não usam Cascade, para tal é ideal atribuir as operações em cascata na modelagem do proprio banco
 	 * Este tipo de relacionamento é composto por umalista da entidade não dominante em caso de unidirecional, as anotações 
 	 * @ManyToMany para definir o tipo de relação
-	 * @JoinTable que deve possuir o nome da tabela de junção muitos pra muitos, um joiColumn contendo o nome do campo da tabela dominante, e o inverseJoinClomun que é o campo da tabela não dominante
+	 * @JoinTable Deve possuir o nome da tabela de junção muitos pra muitos, um joiColumn contendo o nome do campo da tabela dominante e um inverseJoinClomun que é o campo da tabela não dominante
 	 * em caso de relacionamento unidirecional.
 	 */
 	@ManyToMany
