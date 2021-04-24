@@ -8,18 +8,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import br.com.fujioka.service.UserAuthService;
 
 
 /**
@@ -32,6 +30,7 @@ import br.com.fujioka.service.UserAuthService;
  */
 @EnableWebSecurity
 @Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ConfigSpringSecurity extends WebSecurityConfigurerAdapter {
 
 
@@ -48,8 +47,6 @@ public class ConfigSpringSecurity extends WebSecurityConfigurerAdapter {
 
     private static final String[] ROTAS_PUBLICAS_GET ={
         "/produtos/**",
-        "/patrimonios/**",
-        "/funcionarios/**"
         
     };
 

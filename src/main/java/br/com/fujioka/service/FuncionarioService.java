@@ -39,7 +39,6 @@ public class FuncionarioService {
 					() -> new NegocioException("Busca não retornou nenhum resultado", HttpStatus.NOT_FOUND));
 
 			FuncionarioDTO dto = new FuncionarioAdapter(funcionario).converterDTO();
-			System.out.println("Perfil: "+funcionario.getPerfis().get(0).getPerfil().getDescricao());
 			return dto != null ? ResponseEntity.ok(dto) : ResponseEntity.noContent().build();
 		}
 		throw new NegocioException("Necessario um id valido para essa operação", HttpStatus.BAD_REQUEST);

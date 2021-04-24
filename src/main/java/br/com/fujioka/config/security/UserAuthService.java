@@ -1,17 +1,13 @@
-package br.com.fujioka.service;
-
-import java.util.ArrayList;
+package br.com.fujioka.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import br.com.fujioka.entity.Funcionario;
-import br.com.fujioka.entity.UserAuth;
 import br.com.fujioka.exception.NegocioException;
 import br.com.fujioka.repository.FuncionarioRepo;
 

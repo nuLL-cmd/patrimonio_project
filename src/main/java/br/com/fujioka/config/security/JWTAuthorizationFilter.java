@@ -14,6 +14,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
+/**
+ * @author Marco Aurleio
+ * Classe que extende de BasicAuthenticationFilter, onde se implementa  um filtro de autorização.
+ * Server para pegar o token gerado pelo jwt, e validar se ele é um token valido, verificando tambem o usuario e senha passado.
+ * A classe consiste no medod doFilterInternal que faz a validação do token e permite a autorização da aplicação.
+ */
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
     private ConfigJWT security;

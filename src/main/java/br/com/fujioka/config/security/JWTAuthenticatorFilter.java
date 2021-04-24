@@ -2,6 +2,7 @@ package br.com.fujioka.config.security;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -16,10 +17,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import br.com.fujioka.dto.CredenciaisDTO;
-import br.com.fujioka.entity.UserAuth;
 
 /**
  * @author Marco Aurelio
@@ -39,6 +38,7 @@ public class JWTAuthenticatorFilter extends UsernamePasswordAuthenticationFilter
     private ConfigJWT security;
 
     public JWTAuthenticatorFilter(AuthenticationManager authenticationManager, ConfigJWT security){
+        setAuthenticationFailureHandler(new JWTAuthenticationFailureHandler());
         this.authenticationManager = authenticationManager;
         this.security = security;
     }
@@ -68,6 +68,25 @@ public class JWTAuthenticatorFilter extends UsernamePasswordAuthenticationFilter
         String token = security.generateToken(matricula);
         response.addHeader("Authorization", "Bearer "+ token);
         
+        
+    }
+
+    private class JWTAuthenticationFailureHandler implements AuthenticationFailureHandler{
+
+        @Override
+        public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
+                AuthenticationException exception) throws IOException, ServletException {
+                
+            response.setStatus(401);
+            response.setContentType("application/json");
+            response.getWriter().append(json());
+            
+        }
+
+        private CharSequence json() {
+            long date  = new Date().getTime();
+            return "{\"timestamp\": "+date +",\"status\":401,\"erro\":\"N\u00e3o autorizado\",\"message\":\"Matricula ou senha iv\u00e1lidos\",\"path\":\"/login\"}";
+        }
         
     }
 

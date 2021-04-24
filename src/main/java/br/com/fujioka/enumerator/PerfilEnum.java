@@ -2,11 +2,15 @@ package br.com.fujioka.enumerator;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
+import org.springframework.http.HttpStatus;
+
+import br.com.fujioka.exception.NegocioException;
+
 import java.lang.reflect.Field;
 
 public enum PerfilEnum {
 
-    ADMIN ("ADM","ROLE_ADMIN"),
+    ADMIN ("ADMIN","ROLE_ADMIN"),
     COLABORADOR ("COLAB","ROLE_COLABORADOR");
 
 
@@ -14,7 +18,7 @@ public enum PerfilEnum {
     private final String descricao;
 
 
-    private PerfilEnum(String descricao, String codigo){
+    private PerfilEnum(String codigo, String descricao){
         this.codigo = codigo;
         this.descricao = descricao;
 
@@ -27,12 +31,20 @@ public enum PerfilEnum {
         }catch(Exception e){
             e.printStackTrace();
             System.out.println("PerfiEnum: "+e.getMessage());
+            new NegocioException("Erro ao buscar  o perfil do usuario", HttpStatus.FORBIDDEN);
+
         }
     }
 
-    @JsonValue
     public String getDescricao(){
-        return descricao;
+        return this.descricao;
     }
+
+    @JsonValue
+    public String getCodigo(){
+        return this.codigo;
+    }
+
+
   
 }

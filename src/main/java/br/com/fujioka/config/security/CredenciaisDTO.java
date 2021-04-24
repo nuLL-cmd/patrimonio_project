@@ -1,4 +1,4 @@
-package br.com.fujioka.dto;
+package br.com.fujioka.config.security;
 
 import java.io.Serializable;
 
