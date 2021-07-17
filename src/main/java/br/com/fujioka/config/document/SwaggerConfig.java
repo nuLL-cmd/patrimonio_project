@@ -1,4 +1,4 @@
-package br.com.fujioka.config;
+package br.com.fujioka.config.document;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,14 +50,14 @@ public class SubGrupoResource {
 	public ResponseEntity<?> buscaPorMatricula(@PathVariable("id") Integer matricula){
 		return service.buscaPorMatricula(matricula);
 	}
-
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	@ApiOperation(value = "Recurso responsavel por adicionar um novo subgrupo")
 	public SubgrupoDTO adicionaPessoa(@Valid @RequestBody SubgrupoDTO subGrupo) {
 		return service.adicionaSubGrupo(subGrupo);
 	}
-
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@PutMapping
 	@ApiOperation(value = "Recurso responsavel por atualizar um subgrupo")
 	public ResponseEntity<?> atualizaPessoa(@Valid @RequestBody SubgrupoDTO subGrupo) {

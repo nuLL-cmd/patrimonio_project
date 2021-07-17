@@ -34,6 +34,7 @@ public class FuncionarioAdapter extends FuncionarioDTO {
 			setUsuario(this.funcionario.getUsuario());
 			setNome(this.funcionario.getNomeFuncionario());
 			setSituacao(this.funcionario.getSituacao());
+			setPerfis(this.funcionario.getPerfis());
 
 			return this;
 		}
@@ -47,7 +48,7 @@ public class FuncionarioAdapter extends FuncionarioDTO {
 			funcionarios.forEach(f -> {
 				funcionarioSaidas.add(new FuncionarioDTOBuilder().matricula(f.getMatricula())
 						.nome(f.getNomeFuncionario()).situacao(f.getSituacao()).usuario(f.getUsuario())
-						.endereco(f.getEndereco()).contato(f.getContato()).build());
+						.endereco(f.getEndereco()).contato(f.getContato()).perfis(f.getPerfis()).build());
 			});
 
 			return funcionarioSaidas;

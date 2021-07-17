@@ -1,6 +1,8 @@
 package br.com.fujioka.entity;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
@@ -48,7 +52,7 @@ public class Funcionario {
 	private SituacaoEnum situacao;
 
 	@NotBlank(message = "Campo senha não pode ser vazio")
-	@Size(min = 2, max = 15, message = "Campo senha deve ter entre 2 e 15 caractreres")
+	@Size(min = 2, max = 300, message = "Campo senha deve ter entre 2 e 15 caractreres")
 	private String senha;
 	
 	@Column(name = "dt_alteracao")
@@ -72,6 +76,20 @@ public class Funcionario {
 	private String usuario;
 
 
+	/**
+	 * Relacionamentos ManyToMany não usam Cascade, para tal é ideal atribuir as operações em cascata na modelagem do proprio banco
+	 * Este tipo de relacionamento é composto por umalista da entidade não dominante em caso de unidirecional, as anotações 
+	 * @ManyToMany para definir o tipo de relação
+	 * @JoinTable Deve possuir o nome da tabela de junção muitos pra muitos, um joiColumn contendo o nome do campo da tabela dominante e um inverseJoinClomun que é o campo da tabela não dominante
+	 * em caso de relacionamento unidirecional.
+	 */
+	@ManyToMany
+	@JoinTable(name = "tb_perfil_usuario",schema = "dbo", joinColumns = @JoinColumn(name  = "nr_matricula")
+	, inverseJoinColumns = @JoinColumn(name ="id_perfil"))
+	private List<Perfil> perfis = new ArrayList<>();;
+
+
+
 	@Valid
 	@OneToOne(cascade =  CascadeType.ALL)
 	@NotNull(message = "Precisa ser informado um endereço")
@@ -85,6 +103,12 @@ public class Funcionario {
 			@JoinColumn(name = "ddd"), @JoinColumn(name = "telefone")})
 	private Contato contato;
 
+
+
+
+	public Funcionario(){
+		
+	}
 
 	public Integer getMatricula() {
 		return matricula;
@@ -157,6 +181,16 @@ public class Funcionario {
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+
+	public void setPerfis(List<Perfil> perfis){
+		
+		this.perfis  = perfis;
+	
+	}
+
+	public List<Perfil> getPerfis(){
+		return this.perfis;
 	}
 
 

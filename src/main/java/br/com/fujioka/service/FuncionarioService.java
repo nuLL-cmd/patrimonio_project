@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.fujioka.adapter.FuncionarioAdapter;
@@ -21,6 +22,9 @@ import br.com.fujioka.utils.Utilitarios;
 
 @Service
 public class FuncionarioService {
+
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 
 	@Autowired
 	private FuncionarioRepo repository;
@@ -43,8 +47,12 @@ public class FuncionarioService {
 
 	public ResponseEntity<?> adicionaFuncionario(Funcionario funcionario){
 
+		String passwordEncoder = funcionario.getSenha();
+		funcionario.setSenha(encoder.encode(passwordEncoder));
+
 		if(funcionario.getContato() == null)
 			return validaEntidadeFuncionario("contato");
+
 			
 		FuncionarioDTO dto = new FuncionarioAdapter(repository.save(funcionario)).converterDTO();
 		return ResponseEntity.ok(dto);

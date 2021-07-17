@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -59,12 +60,14 @@ public class PatrimonioResource {
 		return service.adicionaPatrimonio(patrimonio);
 	}
 
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@PutMapping
 	@ApiOperation(value = "Recurso responsavel por atualizar um patrimonio")
 	public ResponseEntity<?> atualizaPessoa(@Valid @RequestBody Patrimonio patrimonio) {
 		return service.atualizaPatrimonio(patrimonio);
 	}
 
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@DeleteMapping("{id}")
 	@ApiOperation(value = "Recurso responsavel por deletar um patrimonio por codigo")
 	public ResponseEntity<?> deletaPatrimonio(@PathVariable("id") Integer id) {

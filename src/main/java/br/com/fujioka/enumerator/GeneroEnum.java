@@ -11,8 +11,8 @@ public enum GeneroEnum {
 	D("DIVERSOS","D");
 	
 	
-	private final String codigo;
-	private final String descricao;
+	private  String codigo;
+	private  String descricao;
 	
 	private GeneroEnum(String descricao, String codigo){
 		this.codigo = codigo;
